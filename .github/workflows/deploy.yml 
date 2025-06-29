@@ -1,9 +1,9 @@
-name: Deploy Angular Portfolio to GitHub Pages
+name: Deploy Angular to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # or 'master' if you use that
+      - main  # Trigger deployment on push to main
 
 jobs:
   build-and-deploy:
@@ -27,5 +27,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main
+          branch: gh-pages
           folder: dist/portfolio
