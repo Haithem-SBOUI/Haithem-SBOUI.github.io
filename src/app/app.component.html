@@ -1,0 +1,195 @@
+<div class="navbar-container">
+  <p-menubar [model]="items" class="navbar-menubar">
+    <ng-template pTemplate="end">
+      <p-button icon="pi pi-copy" (onClick)="copyEmail()" class="mx-2" />
+      <p-toast />
+      <span>contact&#64;haithem-sboui.me</span>
+      <p-button (onClick)="toggleDarkMode()" [icon]="darkMode ? 'pi pi-moon' : 'pi pi-sun'" class="ml-5" />
+    </ng-template>
+  </p-menubar>
+</div>
+
+<!-- About Me -->
+<div id="about" pAnimateOnScroll enterClass="animate-fade-in" leaveClass="animate-fade-out">
+  <div class="section-title">
+    <span>About</span>
+  </div>
+  <div class="about-me grid align-items-center p-4">
+    <!-- Left Section: Text (75%) -->
+    <div class="col-12 md:col-6">
+
+      <div class="text-content text-justify">
+        <span class="text-8xl primary-font font-bold">Haithem Sboui</span>
+        <br>
+        <span class="text-6xl font-bold opacity-70">Software Engineer</span>
+
+        <p class="text-base line-height-3">
+          Hey! I'm Haithem, a Computer Science student and a Software engineer based on Germany.
+        </p>
+        <p class="text-base line-height-3">
+          Currently Building <a href="#" class="link-primary">ERP-COMMERCIAL</a>.
+        </p>
+        <p class="text-base line-height-3">
+          Nearly a decade ago, I picked Computer Science in Upper Sec. school. Since then, I've been building my
+          knowledge, sharpening my skills through coding challenges, and learning by doing.
+        </p>
+        <p class="text-base line-height-3">
+          In 2024, I took the leap into the professional world as a full-time Software Engineer, Where I've been
+          working on real-world projects — thinking, writing tons of code, and tackling practical challenges.
+        </p>
+        <p class="text-base line-height-3">
+          You can reach me at <span class="link-primary">contact&#64;haithem-sboui.me</span>
+          for professional inquiries.
+        </p>
+      </div>
+
+    </div>
+    <div class="col-0 md:col-2"></div>
+
+    <!-- Right Section: Image (25%) -->
+    <div class="col-12 md:col-3 flex justify-content-center">
+      <p-avatar image="images/small.jpg" shape="circle" styleClass="animated-avatar" />
+    </div>
+  </div>
+
+</div>
+<p-divider />
+<!-- Projects -->
+<div id="projects" pAnimateOnScroll enterClass="animate-fade-in" leaveClass="animate-fade-out">
+  <div class="section-title">
+    <span>Projects</span>
+  </div>
+  <div class="card">
+    <p-carousel [value]="projects" [numVisible]="1" [numScroll]="1" [circular]="true" containerClass="justify-content-center">
+      <ng-template let-project #item>
+        <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4 flex justify-content-center w-full">
+          <div class="justify-content-center ">
+            <div class="">
+              <!-- Project Card  -->
+              <div class="project-card border border-surface-200 dark:border-surface-700 border-round shadow-2">
+                <p-card class="w-full md:w-96 shadow-3">
+                  <ng-template pTemplate="header">
+                    <div class="project-image-container">
+                      <img [src]="project.bgImage" [alt]="project.title" class="project-image" />
+                      <div class="image-overlay">
+                        <div>
+                          <h3 class="project-title">{{ project.title }}</h3>
+                          <span class="project-description mb-2">
+                            {{ project.description }}
+                          </span>
+                          <div *ngFor="let tech of project.skills" class="text-xs px-2 py-1 rounded bg-white/80 text-white inline-block">
+                            <p-tag severity="success" rounded="true" [value]="tech" />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+
+                  <ng-template pTemplate="footer">
+                    <div class="flex gap-2 justify-content-center">
+                      <a [href]="project.videoLink" target="_blank" rel="Preview" class="p-button p-1 m-1 px-2 font-bold" style="text-decoration: none;">
+                        <i class="pi pi-eye"></i>
+                        Preview
+                      </a>
+                      <p-button *ngIf="project.githubLink && project.githubLink !== ''" label="GitHub" icon="pi pi-github" [outlined]="true" size="small" styleClass="flex-1" target="_blank" (onClick)="openLink(project.githubLink)" />
+                      <span *ngIf="!project.githubLink || project.githubLink === ''" class="flex align-items-center gap-2 text-sm opacity-70">
+                        <i class="pi pi-lock"></i>
+                        Private Repository
+                      </span>
+                    </div>
+                  </ng-template>
+                </p-card>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </ng-template>
+    </p-carousel>
+
+  </div>
+
+
+</div>
+<p-divider />
+
+<!-- Edcuation  -->
+<div id="education" pAnimateOnScroll enterClass="animate-fade-in" leaveClass="animate-fade-out">
+  <div class="section-title">
+    <span>Education</span>
+  </div>
+  <div class="card">
+    <p-timeline [value]="education">
+      <ng-template #opposite let-event>
+        <small class="text-surface-500 dark:text-surface-400">{{ event.date }}</small>
+      </ng-template>
+      <ng-template #content let-event>
+        <strong>{{ event.university }}</strong>
+        <br>
+        <i>{{ event.details }}</i>
+        <br>
+        <i>{{ event.location }}</i>
+      </ng-template>
+    </p-timeline>
+  </div>
+</div>
+<p-divider />
+
+<!-- Documents -->
+
+
+<div id="Documents" pAnimateOnScroll enterClass="animate-fade-in" leaveClass="animate-fade-out">
+  <div class="section-title">
+    <span>Documents</span>
+  </div>
+  <div class="about-me grid align-items-center p-4">
+    <div class="col-12 md:col-9">
+      <div class="line-height-4">
+        <div *ngFor="let doc of documents">
+          <div class="card gap-3 p-3">
+            <i class="pi pi-file  mr-3"></i>
+            <span class="font-bold font-italic">{{ doc.title }}</span>
+
+            <p-button label="Open" icon="pi pi-external-link" (click)="showDialog(doc.url, doc.title)" size="small" class="mx-3" />
+
+
+          </div>
+        </div>
+        <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '80vw', height: '90vh' }" [dismissableMask]="true" [contentStyle]="{ padding: '0' }" styleClass="!border-none !bg-transparent">
+          <ng-template pTemplate="header">
+            <h2 class="">{{ selectedTitle }}</h2>
+          </ng-template>
+          <iframe *ngIf="selectedDocUrl" [src]="getSanitizedUrl(selectedDocUrl)" class="w-full h-full border-none"></iframe>
+
+        </p-dialog>
+
+      </div>
+    </div>
+  </div>
+</div>
+<p-divider />
+
+
+<!-- Extracurricular -->
+<div id="Extracurricular" pAnimateOnScroll enterClass="animate-fade-in" leaveClass="animate-fade-out">
+  <div class="section-title">
+    <span>Extracurricular</span>
+  </div>
+  <div class="about-me grid align-items-center p-4">
+    <div class="col-12 md:col-9">
+      <div class="line-height-4">
+        <div *ngFor="let extra of extracurricular">
+          <div class="card gap-3 p-3">
+            <i class="pi pi-sparkles mr-3"></i>
+            <span class="font-bold font-italic">{{ extra.title }}</span>
+            <p class="">{{ extra.description }}</p>
+            <p class="font-italic">{{ extra.skills }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-scrolltop />
