@@ -29,7 +29,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "https://Haithem-SBOUI.github.io/Haithem-SBOUI.github.io/"
           },
           "configurations": {
             "production": {
