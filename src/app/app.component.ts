@@ -100,7 +100,7 @@ export class AppComponent implements OnInit {
         skills: ["Angular - TypeScript", "FastAPI - Python", "PrimeNG", "PostgreSQL"],
         githubLink: "",
         bgImage: "images/projects/erp-1.png",
-        videoLink: "https://drive.google.com/file/d/1L9YIzhEhJuBgGDirFcsR7_sKFSEsu0kr/view"
+        videoLink: "https://drive.google.com/file/d/1B3kL8Jf3nvRvevYrohiFbT-65Iw0yHnq/view"
       },
       {
         id: 2,
