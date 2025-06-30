@@ -5,11 +5,16 @@
 }
 
 .link-primary {
-    color: #6b1900;
+    color: var(--secondary-color-text);
     text-decoration: underline;
     font-weight: bolder;
     font-style: italic;
+    transition: color 0.2s ease-in-out;
+}
 
+.link-primary:hover {
+    color: var(--secondary-color-hover);
+    text-decoration: underline;
 }
 
 .about-me {
@@ -27,6 +32,8 @@
     width: 300px;
     height: 100%;
     animation: floatY 1.5s ease-in-out infinite alternate;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.384), 0 1.5px 4px rgba(34, 197, 94, 0.18);
+    border-radius: 18px;
 }
 
 @keyframes floatY {
@@ -45,9 +52,13 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: white;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.158);
-    height: 60px; /* Define exact navbar height */
+    height: 60px;
 }
 
 /* Add scroll offset for all sections to account for fixed navbar */
@@ -86,11 +97,36 @@
 .project-card {
     width: 900px;
     height: 500px;
-    transition: transform 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 5px 2px 10px 8px rgba(0, 0, 0, 0.308);
+    border:rgb(34, 197, 94) solid 3px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.548), 
+                0 6px 16px rgba(0, 0, 0, 0.377),
+                0 2px 8px rgba(34, 197, 94, 0.445);
+}
+
+.project-card .p-card {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    height: 100%;
+}
+
+.project-card .p-card .p-card-header {
+    padding: 0 !important;
+}
+
+.project-card .p-card .p-card-footer {
+    padding: 1.5rem !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.98);
 }
 
 .project-image-container {
@@ -102,11 +138,11 @@
     width: 100%;
     height: 400px;
     object-fit: cover;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 }
 
 .project-card:hover .project-image {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .image-overlay {
@@ -116,30 +152,40 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.5) 50%,
             rgba(0, 0, 0, 0.1) 100%);
     display: flex;
     align-items: flex-end;
-    padding: 1rem;
+    padding: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+.project-card:hover .image-overlay {
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            rgba(0, 0, 0, 0.2) 100%);
 }
 
 .project-title {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: bold;
-    margin: 0 0 0.5rem 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    margin: 0 0 0.75rem 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    font-family: 'Kalnia', serif;
 }
 
 .project-description {
-    color: white;
-    font-size: 1rem;
-    line-height: 1.4;
-    margin: 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -168,4 +214,196 @@
 @keyframes fadeOut {
   from { opacity: 1; transform: translateY(0); }
   to { opacity: 0; transform: translateY(20px); }
+}
+
+/* Green styling for buttons and interactive elements */
+.green-button {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+.green-button:hover {
+    background-color: var(--secondary-color-hover) !important;
+    border-color: var(--secondary-color-hover) !important;
+}
+
+/* Custom green tags */
+.p-tag.p-tag-success {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+/* Timeline customization with green accents */
+.p-timeline .p-timeline-event-marker {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+.p-timeline .p-timeline-event-connector {
+    background-color: var(--green-300) !important;
+}
+
+/* Divider with green accent */
+.p-divider.green-divider {
+    background-color: var(--green-300) !important;
+}
+
+/* Green accent for section titles */
+.section-title-green {
+    color: var(--secondary-color-text);
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 20px;
+}
+
+/* Preview button with green styling */
+.preview-button {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    color: white !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 1px 16px !important;
+    border-radius: 6px !important;
+    
+    transition: all 0.2s ease-in-out !important;
+}
+
+.preview-button:hover {
+    background-color: var(--secondary-color-hover) !important;
+    border-color: var(--secondary-color-hover) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.2) !important;
+}
+
+/* Menu items with green hover */
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content:hover {
+    background-color: var(--green-50) !important;
+}
+
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-content:hover .p-menuitem-text {
+    color: var(--secondary-color) !important;
+}
+
+/* Scroll to top button with green styling */
+.p-scrolltop {
+    background-color: var(--secondary-color) !important;
+}
+
+.p-scrolltop:hover {
+    background-color: var(--secondary-color-hover) !important;
+}
+
+
+/* Carousel navigation improvements */
+.p-carousel {
+    position: relative;
+    padding: 0 60px; /* Add padding to accommodate navigation buttons */
+}
+
+.p-carousel .p-carousel-prev-button,
+.p-carousel .p-carousel-next-button {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    background: var(--secondary-color) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 48px !important;
+    height: 48px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
+}
+
+.p-carousel .p-carousel-prev-button:hover,
+.p-carousel .p-carousel-next-button:hover {
+    background: var(--secondary-color-hover) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.p-carousel .p-carousel-prev-button {
+    left: 30px !important;
+}
+
+.p-carousel .p-carousel-next-button {
+    right: 30px !important;
+}
+
+.p-carousel .p-carousel-prev-button .p-carousel-prev-button-icon,
+.p-carousel .p-carousel-next-button .p-carousel-next-button-icon {
+    color: white !important;
+    font-size: 1.2rem !important;
+}
+
+/* Carousel container improvements */
+.p-carousel .p-carousel-content {
+    border-radius: 12px;
+    overflow: visible;
+}
+
+.p-carousel .p-carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Project image enhancements */
+
+/* Technology tags styling improvements */
+.tech-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.tech-tags-container .p-tag {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.75rem !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: var(--secondary-color) !important;
+    font-weight: 600 !important;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments for project cards */
+@media (max-width: 768px) {
+    .project-card {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 450px;
+    }
+    
+    .p-carousel {
+        padding: 0 40px;
+    }
+    
+    .p-carousel .p-carousel-prev-button,
+    .p-carousel .p-carousel-next-button {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    
+    .p-carousel .p-carousel-prev-button {
+        left: 15px !important;
+    }
+    
+    .p-carousel .p-carousel-next-button {
+        right: 15px !important;
+    }
+}
+
+/* Project section container improvements */
+#projects .card {
+    padding: 2rem 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
 }
